@@ -17,15 +17,13 @@ const companyRoutes = require('./routes/companyRoutes');
 const placementRoutes = require('./routes/placementRoutes');
 const trainingRoutes = require('./routes/trainingRoutes');
 const feedbackRoutes = require('./routes/feedbackRoutes');
-const adminRoutes = require('./routes/adminRoutes');
 
-// API Routes
+// API Routes (NO ADMIN NOW)
 app.use('/api/students', studentRoutes);
 app.use('/api/companies', companyRoutes);
 app.use('/api/placements', placementRoutes);
 app.use('/api/trainings', trainingRoutes);
 app.use('/api/feedback', feedbackRoutes);
-app.use('/api/admin', adminRoutes);
 
 // Health check route
 app.get('/', (req, res) => {
@@ -41,4 +39,12 @@ app.use((err, req, res, next) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`✓ Server running on http://localhost:${PORT}`);
+});
+
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist/index.html"));
 });

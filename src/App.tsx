@@ -10,8 +10,8 @@ import Companies from "./pages/Companies";
 import Placements from "./pages/Placements";
 import Trainings from "./pages/Trainings";
 import Feedback from "./pages/Feedback";
-import AdminLogin from "./pages/AdminLogin";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
 
 const queryClient = new QueryClient();
 
@@ -24,13 +24,13 @@ const App = () => (
         <Navigation />
         <Routes>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/students" element={<Students />} />
           <Route path="/companies" element={<Companies />} />
           <Route path="/placements" element={<Placements />} />
           <Route path="/trainings" element={<Trainings />} />
           <Route path="/feedback" element={<Feedback />} />
-          <Route path="/admin" element={<AdminLogin />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* Removed AdminLogin */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

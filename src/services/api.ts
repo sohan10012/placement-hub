@@ -10,16 +10,7 @@ const api = axios.create({
   },
 });
 
-// Add token to requests if available
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
-
-// Students API
+// ---------------------- Students API ----------------------
 export const studentsAPI = {
   getAll: () => api.get('/students'),
   getById: (id: number) => api.get(`/students/${id}`),
@@ -28,7 +19,7 @@ export const studentsAPI = {
   delete: (id: number) => api.delete(`/students/${id}`),
 };
 
-// Companies API
+// ---------------------- Companies API ----------------------
 export const companiesAPI = {
   getAll: () => api.get('/companies'),
   getById: (id: number) => api.get(`/companies/${id}`),
@@ -37,7 +28,7 @@ export const companiesAPI = {
   delete: (id: number) => api.delete(`/companies/${id}`),
 };
 
-// Placements API
+// ---------------------- Placements API ----------------------
 export const placementsAPI = {
   getAll: () => api.get('/placements'),
   getById: (id: number) => api.get(`/placements/${id}`),
@@ -46,7 +37,7 @@ export const placementsAPI = {
   delete: (id: number) => api.delete(`/placements/${id}`),
 };
 
-// Trainings API
+// ---------------------- Trainings API ----------------------
 export const trainingsAPI = {
   getAll: () => api.get('/trainings'),
   getById: (id: number) => api.get(`/trainings/${id}`),
@@ -55,19 +46,13 @@ export const trainingsAPI = {
   delete: (id: number) => api.delete(`/trainings/${id}`),
 };
 
-// Feedback API
+// ---------------------- Feedback API ----------------------
 export const feedbackAPI = {
   getAll: () => api.get('/feedback'),
   getById: (id: number) => api.get(`/feedback/${id}`),
   create: (data: any) => api.post('/feedback', data),
   update: (id: number, data: any) => api.put(`/feedback/${id}`, data),
   delete: (id: number) => api.delete(`/feedback/${id}`),
-};
-
-// Admin API
-export const adminAPI = {
-  register: (data: any) => api.post('/admin/register', data),
-  login: (data: any) => api.post('/admin/login', data),
 };
 
 export default api;
