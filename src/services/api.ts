@@ -1,7 +1,7 @@
 // API Service - handles all API calls to backend
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://feisty-gentleness-production-c2a9.up.railway.app/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
